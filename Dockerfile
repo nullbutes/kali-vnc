@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM kalilinux/kali:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -33,6 +33,7 @@ RUN set -ex; \
         libqt5x11extras5 \
         qml-module-qtquick-controls \
         qml-module-qtquick-dialogs \
+	python3-dev
         g++ \
         ssh \
         terminator \
@@ -57,11 +58,6 @@ RUN adduser ubuntu
 RUN echo "ubuntu:ubuntu" | chpasswd && \
     adduser ubuntu sudo && \
     sudo usermod -a -G sudo ubuntu
-
-RUN wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb && apt install ./teamviewer_amd64.deb
-
-RUN sudo add-apt-repository ppa:obsproject/obs-studio \
-     && sudo apt-get update && sudo apt-get install -y obs-studio
 
 COPY . /app
 
