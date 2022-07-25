@@ -1,4 +1,4 @@
-FROM kalilinux/kali:latest
+FROM parrotsec/core
 
 ENV DEBIAN_FRONTEND=noninteractive
 
